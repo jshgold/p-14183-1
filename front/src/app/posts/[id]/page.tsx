@@ -20,7 +20,11 @@ function usePost(id: number) {
   const deletePost = (id: number, onSuccess: () => void) => {
     apiFetch(`/api/v1/posts/${id}`, {
       method: "DELETE",
-    }).then(onSuccess);
+    })
+      .then(onSuccess)
+      .catch((error) => {
+        alert(`${error.resultCode} : ${error.msg}`);
+      });
   };
 
   return {
@@ -46,12 +50,15 @@ function usePostComments(postId: number) {
     apiFetch(`/api/v1/posts/${postId}/comments/${commentId}`, {
       method: "DELETE",
     }).then((data) => {
-      if (postComments == null) return;
+        if (postComments == null) return;
 
-      setPostComments(postComments.filter((c) => c.id != commentId));
+        setPostComments(postComments.filter((c) => c.id != commentId));
 
-      onSuccess(data);
-    });
+        onSuccess(data);
+      })
+      .catch((error) => {
+        alert(`${error.resultCode} : ${error.msg}`);
+      });
   };
 
   const writeComment = (content: string, onSuccess: (data: any) => void) => {
@@ -61,12 +68,14 @@ function usePostComments(postId: number) {
         content,
       }),
     }).then((data) => {
-      if (postComments == null) return;
+        if (postComments == null) return;
 
-      setPostComments([...postComments, data.data]);
-
-      onSuccess(data);
-    });
+        setPostComments([...postComments, data.data]);
+        onSuccess(data);
+      })
+      .catch((error) => {
+        alert(`${error.resultCode} : ${error.msg}`);
+      });   
   };
 
   const modifyComment = (
@@ -77,17 +86,21 @@ function usePostComments(postId: number) {
     apiFetch(`/api/v1/posts/${postId}/comments/${commentId}`, {
       method: "PUT",
       body: JSON.stringify({ content }),
-    }).then((data) => {
-      if (postComments == null) return;
+    })
+      .then((data) => {
+        if (postComments == null) return;
 
-      setPostComments(
-        postComments.map((comment) =>
-          comment.id === commentId ? { ...comment, content } : comment
-        )
-      );
+        setPostComments(
+          postComments.map((comment) =>
+            comment.id === commentId ? { ...comment, content } : comment
+          )
+        );
 
-      onSuccess(data);
-    });
+        onSuccess(data);
+      })
+      .catch((error) => {
+        alert(`${error.resultCode} : ${error.msg}`);
+      });
   };
 
   return {
