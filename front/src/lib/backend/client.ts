@@ -4,7 +4,7 @@ export const apiFetch = (url: string, options?: RequestInit) => {
   options = options || {};
   options.credentials = "include";
 
-  if (options?.body) {  
+  if (options?.body) {
     const headers = new Headers(options?.headers || {});
 
     if (!headers.has("Content-Type")) {

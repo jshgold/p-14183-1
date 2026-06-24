@@ -32,7 +32,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
 
     const titleInput = form.elements.namedItem("title") as HTMLInputElement;
     const contentTextarea = form.elements.namedItem(
-      "content"
+      "content",
     ) as HTMLTextAreaElement;
 
     titleInput.value = titleInput.value.trim();
@@ -57,7 +57,8 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
         title: titleInput.value,
         content: contentTextarea.value,
       }),
-    }).then((data) => {
+    })
+      .then((data) => {
         alert(data.msg);
         router.replace(`/posts/${id}`);
       })
