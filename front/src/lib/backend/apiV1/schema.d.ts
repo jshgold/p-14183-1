@@ -87,7 +87,6 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        /** 가입 */
         post: operations["join"];
         delete?: never;
         options?: never;
@@ -104,7 +103,6 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        /** 로그인 */
         post: operations["login"];
         delete?: never;
         options?: never;
@@ -119,7 +117,6 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** 내 정보 */
         get: operations["me"];
         put?: never;
         post?: never;
@@ -136,7 +133,6 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** 전체 글 개수 */
         get: operations["count"];
         put?: never;
         post?: never;
@@ -153,7 +149,6 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** 다건 조회 */
         get: operations["getItems_2"];
         put?: never;
         post?: never;
@@ -170,7 +165,6 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** 단건 조회 */
         get: operations["getItem_2"];
         put?: never;
         post?: never;
@@ -190,7 +184,6 @@ export interface paths {
         get?: never;
         put?: never;
         post?: never;
-        /** 로그아웃 */
         delete: operations["logout"];
         options?: never;
         head?: never;
@@ -219,16 +212,15 @@ export interface components {
         };
         PostDto: {
             /** Format: int32 */
-            id?: number;
+            id: number;
             /** Format: date-time */
-            createDate?: string;
+            createDate: string;
             /** Format: date-time */
-            modifyDate?: string;
+            modifyDate: string;
             /** Format: int32 */
-            authorId?: number;
-            authorName?: string;
-            title?: string;
-            content?: string;
+            authorId: number;
+            authorName: string;
+            title: string;
         };
         RsDataPostDto: {
             resultCode?: string;
@@ -240,17 +232,17 @@ export interface components {
         };
         PostCommentDto: {
             /** Format: int32 */
-            id?: number;
+            id: number;
             /** Format: date-time */
-            createDate?: string;
+            createDate: string;
             /** Format: date-time */
-            modifyDate?: string;
+            modifyDate: string;
             /** Format: int32 */
-            authorId?: number;
-            authorName?: string;
+            authorId: number;
+            authorName: string;
             /** Format: int32 */
-            postId?: number;
-            content?: string;
+            postId: number;
+            content: string;
         };
         RsDataPostCommentDto: {
             resultCode?: string;
@@ -264,12 +256,12 @@ export interface components {
         };
         MemberDto: {
             /** Format: int32 */
-            id?: number;
+            id: number;
             /** Format: date-time */
-            createDate?: string;
+            createDate: string;
             /** Format: date-time */
-            modifyDate?: string;
-            name?: string;
+            modifyDate: string;
+            name: string;
         };
         RsDataMemberDto: {
             resultCode?: string;
@@ -292,26 +284,26 @@ export interface components {
         };
         PostWithContentDto: {
             /** Format: int32 */
-            id?: number;
+            id: number;
             /** Format: date-time */
-            createDate?: string;
+            createDate: string;
             /** Format: date-time */
-            modifyDate?: string;
+            modifyDate: string;
             /** Format: int32 */
-            authorId?: number;
-            authorName?: string;
-            title?: string;
-            content?: string;
+            authorId: number;
+            authorName: string;
+            title: string;
+            content: string;
         };
         MemberWithUsernameDto: {
             /** Format: int32 */
-            id?: number;
+            id: number;
             /** Format: date-time */
-            createDate?: string;
+            createDate: string;
             /** Format: date-time */
-            modifyDate?: string;
-            username?: string;
-            name?: string;
+            modifyDate: string;
+            username: string;
+            name: string;
         };
         AdmPostCountResBody: {
             /** Format: int64 */
@@ -706,7 +698,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json;charset=UTF-8": components["schemas"]["RsDataVoid"];
+                    "application/json;charset=UTF-8": components["schemas"]["RsDataMemberDto"];
                 };
             };
         };
